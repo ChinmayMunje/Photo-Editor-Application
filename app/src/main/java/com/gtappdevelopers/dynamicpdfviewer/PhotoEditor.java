@@ -25,13 +25,11 @@ import iamutkarshtiwari.github.io.ananas.editimage.ImageEditorIntentBuilder;
 
 public class PhotoEditor extends AppCompatActivity {
 
-    private ImageView imageView;
     private Button btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo_editor);
-        imageView = findViewById(R.id.idIVImage);
         btn = findViewById(R.id.idBtnPick);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,7 +89,6 @@ public class PhotoEditor extends AppCompatActivity {
                     startActivityForResult(i,101);
                     break;
                 case 101:
-                    imageView.setImageURI(uri);
                     Toast.makeText(this, "Image saved..", Toast.LENGTH_SHORT).show();
                 break;
 
