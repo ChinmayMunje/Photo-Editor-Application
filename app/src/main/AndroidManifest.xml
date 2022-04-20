@@ -14,19 +14,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DynamicPDFViewer">
-        <activity android:name=".PhotoEditor">
+        <activity android:name=".GoogleMapsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
-
+        <activity android:name=".PhotoEditor">
+        </activity>
+        <activity android:name=".MainActivity" />
         <activity
             android:name="com.dsphotoeditor.sdk.activity.DsPhotoEditorActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Holo.NoActionBar" />
-
         <activity
             android:name="com.dsphotoeditor.sdk.activity.DsPhotoEditorStickerActivity"
             android:screenOrientation="portrait"
@@ -36,7 +37,6 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Holo.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
-
         <activity
             android:name="com.dsphotoeditor.sdk.activity.DsPhotoEditorCropActivity"
             android:screenOrientation="portrait"
@@ -45,7 +45,6 @@
             android:name="com.dsphotoeditor.sdk.activity.DsPhotoEditorDrawActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Holo.NoActionBar" />
-
     </application>
 
 </manifest>

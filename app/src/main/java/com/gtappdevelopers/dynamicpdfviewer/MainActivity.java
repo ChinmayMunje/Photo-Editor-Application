@@ -22,57 +22,15 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
-    private FirebaseDatabase firebaseDatabase;
-    private DatabaseReference databaseReference;
-    private PDFView pdfView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        pdfView = findViewById(R.id.idPDFView);
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("url");
-        initializePDFView();
+
     }
 
-    private void initializePDFView() {
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String pdfUrl = snapshot.getValue(String.class);
-                new RetrivePDFFromURL().execute(pdfUrl);
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(MainActivity.this, "Fail to get PDF URL", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    class RetrivePDFFromURL extends AsyncTask<String, Void, InputStream> {
-
-        @Override
-        protected InputStream doInBackground(String... strings) {
-            InputStream pdfStream = null;
-            try {
-                URL url = new URL(strings[0]);
-                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-                if (httpURLConnection.getResponseCode() == 200) {
-                    pdfStream = new BufferedInputStream(httpURLConnection.getInputStream());
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-                return null;
-            }
-            return pdfStream;
-        }
-
-        @Override
-        protected void onPostExecute(InputStream inputStream) {
-            pdfView.fromStream(inputStream).load();
-        }
-    }
 
 }
